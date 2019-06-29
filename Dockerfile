@@ -1,9 +1,9 @@
-FROM java:8
+FROM tomcat:8.0-alpine
 
-WORKDIR /
+LABEL maintainer="nitincmestry@gmail.com"
 
-ADD target/my-app-1.0-SNAPSHOT.jar my-app-1.0-SNAPSHOT.jar
+ADD target/my-app-1.0-SNAPSHOT.jar /usr/local/tomcat/webapps/
 
 EXPOSE 8080
 
-CMD java - jar my-app-1.0-SNAPSHOT.jar
+CMD ["catalina.sh", "run"]
